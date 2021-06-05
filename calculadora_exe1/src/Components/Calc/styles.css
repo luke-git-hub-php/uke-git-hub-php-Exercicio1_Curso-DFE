@@ -1,0 +1,23 @@
+.calc-buttons {
+    max-width: 400px;
+}
+
+.calc-visor {
+    width: 100%;
+    padding: 10px;
+    text-align: end;
+    border-radius: 0.8rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 0.8rem;
+    font-size: 1.5rem;
+}
+
+button:focus, .calc-visor:focus {
+    outline: none;
+}
