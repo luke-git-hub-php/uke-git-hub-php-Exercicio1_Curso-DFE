@@ -1,36 +1,46 @@
-import React, { useState } from 'react';
-
-import './styles.css';
-
-function Calc() {
-
-    const [ values, setValues ] = useState("")
-
-    const valueHandler = (element) => {
-        setValues(values + element.target.name)
+import React, { Component } from "react";
+import "./styles.css";
+class Calc extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value1: 0,
+            value2: 0,
+        };
+        this.handleChangeInput1 = this.handleChangeInput1.bind(this);
+        this.handleChangeInput2 = this.handleChangeInput2.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-    const operatorHandler = (element) => {
-        setValues(eval(values))
+    handleChangeInput1(event) {
+        this.setState({ value1: Number(event.target.value) });
     }
-
-    return (
-        <div className=" calc-buttons">
-            <input className="calc-visor" value={values} disabled="disabled"></input>
-            <button name="1" onClick={valueHandler}>1</button>
-            <button name="2" onClick={valueHandler}>2</button>
-            <button name="3" onClick={valueHandler}>3</button>
-            <button name="+" onClick={valueHandler}>+</button>
-            <button name="4" onClick={valueHandler}>4</button>
-            <button name="5" onClick={valueHandler}>5</button>
-            <button name="6" onClick={valueHandler}>6</button>
-            <button name="7" onClick={valueHandler}>7</button>
-            <button name="8" onClick={valueHandler}>8</button>
-            <button name="9" onClick={valueHandler}>9</button>
-            <button name="0" onClick={valueHandler}>0</button>
-            <button name="=" onClick={operatorHandler}>=</button>
-        </div>
-    );
+    handleChangeInput2(event) {
+        this.setState({ value2: Number(event.target.value) });
+    }
+    handleSubmit(event) {
+        alert(`Resultado da Soma: ${this.state.value1 + this.state.value2}`);
+        event.preventDefault();
+    }
+    render() {
+        return (<div className="calc-buttons" >
+            <br />
+            <section>
+                <p> Digite o primeiro número: </p>
+                <input value={this.state.num1}
+                    onChange={this.handleChangeInput1}
+                    className="num1"
+                    type="number" />
+                <br />
+                <p> Digite o segundo número: </p> <
+                    input value={this.state.num1}
+                    onChange={this.handleChangeInput2}
+                    className="num2"
+                    type="number" />
+                <br />
+                <br />
+                <button onClick={this.handleSubmit} > + </button> <br />
+            </section> </div>
+        );
+    }
 }
-
 export default Calc;
